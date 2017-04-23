@@ -1,0 +1,26 @@
+<resources>
+    <string name="app_name">පන්සිල් මළුව දේශනා</string>
+
+    <!-- Menu Items -->
+    <string name="action_settings">සැකසුම්</string>
+    <string name="action_bar_back_button_text">දේශනා</string>
+
+    <!-- Error Messages -->
+    <string name="error_message_network">Network error</string>
+    <string name="error_message_call">Call failed</string>
+    <string name="error_message_map">Map loading failed</string>
+
+    <!-- Audio Tracks Links-->
+    <string name="track_link_pansil_maluwa_1">http://www.maharahathunwadimagaosse.org/download/pansil-maluwa/Pansil-Maluwa-01.mp3</string>
+    <string name="track_link_pansil_maluwa_2">http://www.maharahathunwadimagaosse.org/download/pansil-maluwa/Pansil-Maluwa-02.mp3</string>
+    <!--<string name="track_link_pansil_maluwa_3">http://www.maharahathunwadimagaosse.org/download/pansil-maluwa/Pansil-Maluwa-03.mp3</string>-->
+    <string name="track_link_pansil_maluwa_3">http://www.music.lk/starter.php?file=35734&#38;f=Yana-Thanaka-Mihindu-Ariyaratne-ft-Raj-Music.lk.mp3</string>
+    <string name="track_link_pansil_maluwa_4">http://www.maharahathunwadimagaosse.org/download/pansil-maluwa/Pansil-Maluwa-04.mp3</string>
+
+    <!-- Audio Tracks Name-->
+    <string name="track_name_pansil_maluwa_1">පන්සිල් මළුව දේශනය 1</string>
+    <string name="track_name_pansil_maluwa_2">පන්සිල් මළුව දේශනය 2</string>
+    <string name="track_name_pansil_maluwa_3">පන්සිල් මළුව දේශනය 3</string>
+    <string name="track_name_pansil_maluwa_4">පන්සිල් මළුව දේශනය 4</string>
+
+</resources>

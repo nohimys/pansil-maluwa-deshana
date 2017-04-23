@@ -1,0 +1,144 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.nohimys.pansilmaluwadeshana.fragments.PlayerFragment"
+    android:padding="16dp">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:id="@+id/linear_layout_upper"
+        >
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textAlignment="center"
+            android:textSize="@dimen/font_larger"
+            android:id="@+id/textview_player_heading"/>
+
+        <android.support.v7.widget.AppCompatImageView
+            android:id="@+id/image_view_player_cover_photo"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:scaleType="fitCenter"
+            android:src="@drawable/pansil_maluwa_cover_image"
+            />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:minHeight="50dp"
+            android:gravity="fill"
+            android:inputType="textMultiLine"
+            android:textSize="@dimen/font_larger"
+            android:id="@+id/textview_description"/>
+
+    </LinearLayout>
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentRight="true"
+        android:id="@+id/frame_layout_seekbar"
+        android:layout_alignTop="@id/linear_layout_upper"
+        android:layout_height="@dimen/chunkHeight"
+        android:background="@android:color/transparent"
+        >
+
+        <SeekBar
+            android:id="@+id/seekBarMain"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_alignParentLeft="true"
+            android:layout_gravity="center"
+            android:layout_marginBottom="5dp"
+            android:indeterminate="false"
+            android:maxHeight="6dp"
+            android:maxWidth="450dp"
+            android:minHeight="3dp"
+            android:paddingLeft="9dp"
+            android:paddingRight="9dp"
+            />
+
+        <!--<rm.com.audiowave.AudioWaveView-->
+        <!--android:id="@+id/audio_wave_view_buffer"-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="match_parent"-->
+        <!--chunkWidth="@dimen/chunkWidth"-->
+        <!--chunkHeight="@dimen/chunkHeight"-->
+        <!--minChunkHeight="@dimen/minChunkHeight"-->
+        <!--chunkSpacing="@dimen/chunkSpacing"-->
+        <!--chunkRadius="@dimen/chunkRadius"-->
+        <!--waveColor="@android:color/white"-->
+        <!--/>-->
+
+        <!--<rm.com.audiowave.AudioWaveView-->
+        <!--android:id="@+id/audio_wave_view_track_progress"-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="match_parent"-->
+        <!--chunkWidth="@dimen/chunkWidth"-->
+        <!--chunkHeight="@dimen/chunkHeight"-->
+        <!--minChunkHeight="@dimen/minChunkHeight"-->
+        <!--chunkSpacing="@dimen/chunkSpacing"-->
+        <!--chunkRadius="@dimen/chunkRadius"-->
+        <!--waveColor="@android:color/black"-->
+        <!--android:alpha="1.0"-->
+        <!--/>-->
+
+    </FrameLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:id="@+id/relative_layout_navigation"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignTop="@id/frame_layout_seekbar"
+        android:background="@android:color/holo_blue_dark"
+        android:layout_height="20dp">
+
+        <android.support.v7.widget.AppCompatImageButton
+            android:layout_width="20dp"
+            android:layout_height="match_parent"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentBottom="true"
+            android:scaleType="fitCenter"
+            android:adjustViewBounds="false"
+            android:layout_centerHorizontal="true"
+            android:src="@drawable/ic_player_button_play"
+            android:id="@+id/image_button_play_stop_player"
+            />
+
+        <android.support.v7.widget.AppCompatImageButton
+            android:layout_width="20dp"
+            android:layout_height="match_parent"
+            android:layout_toRightOf="@id/image_button_play_stop_player"
+            android:scaleType="centerInside"
+            android:adjustViewBounds="true"
+            android:layout_centerHorizontal="true"
+            android:src="@drawable/ic_player_button_forward"
+            android:id="@+id/image_button_backward"
+            />
+        <android.support.v7.widget.AppCompatImageButton
+            android:layout_width="20dp"
+            android:layout_height="match_parent"
+            android:layout_toLeftOf="@id/image_button_play_stop_player"
+            android:scaleType="centerInside"
+            android:adjustViewBounds="true"
+            android:layout_centerHorizontal="true"
+            android:src="@drawable/ic_player_button_backward"
+            android:id="@+id/image_button_forward"
+            />
+
+    </RelativeLayout>
+
+
+
+</RelativeLayout>
