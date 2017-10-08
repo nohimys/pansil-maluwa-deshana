@@ -29,10 +29,12 @@
     <dimen name="list_view_padding_top_bottom">5dp</dimen>
     <dimen name="list_view_divider_height">1dp</dimen>
 
+    <dimen name="player_control_button_width">80dp</dimen>
+
     <!-- Audio Wave Bar -->
     <dimen name="chunkWidth">3dp</dimen>
-    <dimen name="chunkHeight">30dp</dimen>
-    <dimen name="minChunkHeight">2dp</dimen>
+    <dimen name="chunkHeight">32dp</dimen>
+    <dimen name="minChunkHeight">10dp</dimen>
     <dimen name="chunkSpacing">1dp</dimen>
     <dimen name="chunkRadius">1dp</dimen>
 

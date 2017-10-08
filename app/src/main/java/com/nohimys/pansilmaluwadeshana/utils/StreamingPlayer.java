@@ -49,6 +49,15 @@ public class StreamingPlayer {
                 Log.i("Buffering", "" + percent);
             }
         });
+
+        mediaPlayer.setOnSeekCompleteListener(new MediaPlayer.OnSeekCompleteListener() {
+            @Override
+            public void onSeekComplete(MediaPlayer mp) {
+                if (onStreamCallbackListener != null) {
+                    //onStreamCallbackListener.onTrackProgress(mp.getCurrentPosition());
+                }
+            }
+        });
     }
 
     public static StreamingPlayer getInstance(){
@@ -109,6 +118,14 @@ public class StreamingPlayer {
         else {
             mediaPlayer.pause();
         }
+    }
+
+    public void rewindBackTrack(){
+
+    }
+
+    public void fastForwardTrack(){
+
     }
 
     public SimpleTime getDuration(){

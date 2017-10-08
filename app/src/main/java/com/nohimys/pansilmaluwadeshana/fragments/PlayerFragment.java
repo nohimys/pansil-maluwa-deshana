@@ -27,14 +27,24 @@ public class PlayerFragment extends Fragment implements StreamingPlayer.OnStream
 
     @BindView(R.id.textview_player_heading)
     TextView textviewPlayerHeading;
+
     @BindView(R.id.textview_description)
     TextView textviewDescription;
-    @BindView(R.id.image_button_play_stop_player)
-    ImageButton imageButtonPlayStopPlayer;
+
+    @BindView(R.id.image_button_play_pause_player)
+    ImageButton imageButtonPlayPausePlayer;
+
+    @BindView(R.id.image_button_backward)
+    ImageButton imageButtonBackward;
+
+    @BindView(R.id.image_button_forward)
+    ImageButton imageButtonForward;
 
     //private AudioWaveView audioWaveViewDownloadBuffer;
-   // private AudioWaveView audioWaveViewTrackProgress;
-    private SeekBar seekBarAudioProgress;
+    // private AudioWaveView audioWaveViewTrackProgress;
+
+    @BindView(R.id.seekBarMain)
+    SeekBar seekBarAudioProgress;
 
     private Handler handler;
 
@@ -61,8 +71,47 @@ public class PlayerFragment extends Fragment implements StreamingPlayer.OnStream
         textviewPlayerHeading.setText(trackName);
         textviewDescription.setText(trackLink);
 
-        imageButtonPlayStopPlayer.setOnClickListener(this);
-        //imageButtonPlayStopPlayer.setVisibility(View.INVISIBLE);
+        imageButtonPlayPausePlayer.setOnClickListener(this);
+        imageButtonBackward.setOnClickListener(this);
+        imageButtonForward.setOnClickListener(this);
+
+        imageButtonPlayPausePlayer.setAlpha(0.5f);
+        imageButtonPlayPausePlayer.setEnabled(false);
+        imageButtonBackward.setAlpha(0.5f);
+        imageButtonBackward.setEnabled(false);
+        imageButtonForward.setAlpha(0.5f);
+        imageButtonBackward.setEnabled(false);
+
+        seekBarAudioProgress.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
+            @Override
+            public void onProgressChanged(SeekBar seekBar,final int progress, boolean fromUser) {
+                handler.post(new Runnable() {
+                    @Override
+                    public void run() {
+                        //Get progress of buffer bar and only this is less than that, set the value
+                        if(seekBarAudioProgress.getProgress() > progress) {
+                            textviewDescription.setText("Seeked Position: " + String.valueOf(progress));
+                            seekBarAudioProgress.setProgress(progress);
+                        }
+                    }
+                });
+            }
+
+            @Override
+            public void onStartTrackingTouch(SeekBar seekBar) {
+
+            }
+
+            @Override
+            public void onStopTrackingTouch(SeekBar seekBar) {
+
+            }
+        });
+
+        seekBarAudioProgress.setSecondaryProgress(0);
+        seekBarAudioProgress.setProgress(0);
+
+        //imageButtonPlayPausePlayer.setVisibility(View.INVISIBLE);
 
 //        audioWaveViewDownloadBuffer = (AudioWaveView)resultView.findViewById(R.id.audio_wave_view_buffer);
 //        audioWaveViewDownloadBuffer.setProgress(40.0f);
@@ -155,6 +204,7 @@ public class PlayerFragment extends Fragment implements StreamingPlayer.OnStream
         handler.post(new Runnable() {
             @Override
             public void run() {
+                seekBarAudioProgress.setSecondaryProgress(percentage);
                 //progressBarAudioBuffer.setProgress(percentage);
                 //audioWaveViewDownloadBuffer.setProgress(percentage);
             }
@@ -162,8 +212,14 @@ public class PlayerFragment extends Fragment implements StreamingPlayer.OnStream
     }
 
     @Override
-    public void onTrackProgress(int percentage, SimpleTime simpleTime) {
-        textviewDescription.setText(percentage + "==" + simpleTime.getTimeAsString());
+    public void onTrackProgress(final int percentage, final SimpleTime simpleTime) {
+        handler.post(new Runnable() {
+            @Override
+            public void run() {
+                textviewDescription.setText(percentage + "==" + simpleTime.getTimeAsString());
+                seekBarAudioProgress.setProgress(percentage);
+            }
+        });
     }
 
     @Override
@@ -171,7 +227,13 @@ public class PlayerFragment extends Fragment implements StreamingPlayer.OnStream
         handler.post(new Runnable() {
             @Override
             public void run() {
-                imageButtonPlayStopPlayer.setVisibility(View.VISIBLE);
+                //imageButtonPlayPausePlayer.setVisibility(View.VISIBLE);
+                imageButtonPlayPausePlayer.setAlpha(1.0f);
+                imageButtonPlayPausePlayer.setEnabled(true);
+                imageButtonBackward.setAlpha(1.0f);
+                imageButtonBackward.setEnabled(true);
+                imageButtonForward.setAlpha(1.0f);
+                imageButtonBackward.setEnabled(true);
             }
         });
     }
@@ -186,14 +248,20 @@ public class PlayerFragment extends Fragment implements StreamingPlayer.OnStream
         int id = v.getId();
 
         switch (id){
-            case R.id.image_button_play_stop_player:
+            case R.id.image_button_play_pause_player:
                 if(StreamingPlayer.getInstance().isPlaying()){
-                    imageButtonPlayStopPlayer.setImageResource(R.drawable.ic_player_button_play);
+                    imageButtonPlayPausePlayer.setImageResource(R.drawable.ic_player_button_play);
                 }
                 else {
-                    imageButtonPlayStopPlayer.setImageResource(R.drawable.ic_player_button_pause);
+                    imageButtonPlayPausePlayer.setImageResource(R.drawable.ic_player_button_pause);
                 }
                 StreamingPlayer.getInstance().playOrPauseTrack();
+                break;
+            case R.id.image_button_backward:
+                StreamingPlayer.getInstance().rewindBackTrack();
+                break;
+            case R.id.image_button_forward:
+                StreamingPlayer.getInstance().fastForwardTrack();
                 break;
         }
     }
